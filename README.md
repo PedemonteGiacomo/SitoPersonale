@@ -18,6 +18,9 @@
 
 ### React version (Vite)
 
+All React code now lives in the `my-portfolio` folder. This is the only React
+app in the repository.
+
 1. Navigate to the React app:
     ```bash
     cd my-portfolio
