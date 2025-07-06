@@ -4,7 +4,7 @@
   "description": "1. Clone the repository or download the project files. 2. Ensure you have a local web server installed (e.g., [http-server](https://www.npmjs.com/package/http-server) for Node.js).",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"No tests specified\""
   },
   "keywords": [],
   "author": "",
