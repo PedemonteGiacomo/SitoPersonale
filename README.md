@@ -17,6 +17,6 @@
 ## Customization
 
 - Update the `index.html` file to change content.
-- Add your own styles in `styles/tailwind.min.css`.
+- Add your own styles in `styles/main.css`.
 - Add your own JavaScript in `scripts/main.js`.
 - Place your images in the `images` and `assets` folders.
