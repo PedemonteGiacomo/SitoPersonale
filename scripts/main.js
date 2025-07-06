@@ -48,10 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    document.getElementById('hamburger-menu').addEventListener('click', function() {
-        const navLinks = document.getElementById('nav-links');
-        navLinks.classList.toggle('show');
-    });
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
 
     // Matrix mode toggle
     let matrixMode = false;
