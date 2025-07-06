@@ -1,0 +1,113 @@
+.spin-card {
+    perspective: 1000px;
+}
+
+.spin-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform-style: preserve-3d;
+    animation: spin 1s linear infinite;
+    animation-play-state: paused;
+}
+
+.spin-card-front,
+.spin-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.spin-card-front {
+    background-color: transparent;
+}
+
+.spin-card-back {
+    background-color: transparent;
+    transform: rotateY(180deg);
+}
+
+.spin-card img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.spin-card img:hover {
+    transform: scale(1.1);
+}
+
+@keyframes spin {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+.hint {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: none;
+}
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    z-index: 10;
+}
+
+.hamburger-menu span {
+    height: 2px;
+    width: 25px;
+    background: white;
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+/* Nav Links Styles */
+.nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 60px;
+}
+
+.nav-links li {
+    margin: 20px 0;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+    }
+    .nav-links.show {
+        display: flex;
+    }
+}
