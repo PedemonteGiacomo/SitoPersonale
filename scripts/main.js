@@ -52,6 +52,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const navLinks = document.getElementById('nav-links');
         navLinks.classList.toggle('show');
     });
+
+    // Matrix mode toggle
+    let matrixMode = false;
+    const toggleMatrixMode = () => {
+        matrixMode = !matrixMode;
+        if (matrixMode) {
+            document.body.classList.add('matrix-mode');
+        } else {
+            document.body.classList.remove('matrix-mode');
+        }
+    };
+    const matrixButton = document.getElementById('matrix-toggle');
+    if (matrixButton) {
+        matrixButton.addEventListener('click', toggleMatrixMode);
+    }
     
     
 
