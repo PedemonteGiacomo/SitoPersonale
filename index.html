@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>Giacomo Pedemonte</title>
+
+    <!-- Firebase Initialization -->
+    <script defer src="/__/firebase/10.12.3/firebase-app-compat.js"></script>
+    <script defer src="/__/firebase/10.12.3/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/10.12.3/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/10.12.3/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/10.12.3/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/10.12.3/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/10.12.3/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/10.12.3/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/10.12.3/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/10.12.3/firebase-performance-compat.js"></script>
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-900 font-sans leading-normal tracking-normal">
+    <!-- Header Section -->
+    <header id="home" class="relative w-full h-screen bg-cover bg-center" style="background-image: url('https://picsum.photos/1920/1080');">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="relative z-10 flex flex-col items-center justify-center h-full text-white">
+            <div class="spin-card w-60 h-60 mb-6" id="spin-card">
+                <div class="spin-card-inner">
+                    <div class="spin-card-front">
+                        <img alt="Profile Picture" class="w-60 h-60" src="images/profile.jpeg" />
+                    </div>
+                    <div class="spin-card-back">
+                        <img alt="Profile Picture" class="w-60 h-60" src="images/profile.jpeg" />
+                    </div>
+                </div>
+            </div>
+            <h1 class="text-5xl font-bold text-center">Giacomo Pedemonte</h1>
+            <nav class="mt-4">
+                <div class="md:hidden flex items-center">
+                    <button id="hamburger" class="focus:outline-none">
+                        <i class="fas fa-bars text-3xl"></i>
+                    </button>
+                </div>
+                <ul id="menu" class="hidden md:flex space-x-4">
+                    <li><a class="hover:underline" href="#home">Home</a></li>
+                    <li><a class="hover:underline" href="#experience">Experience</a></li>
+                    <li><a class="hover:underline" href="#education">Education</a></li>
+                    <li><a class="hover:underline" href="#skills">Toolbox</a></li>
+                    <li><a class="hover:underline" href="#projects">Projects</a></li>
+                    <li><a class="hover:underline" href="#contact">Contact</a></li>
+                </ul>
+                <ul id="mobile-menu" class="absolute top-full left-0 w-full bg-gray-800 text-white hidden flex-col space-y-2 md:hidden">
+                    <li><a class="block p-4 hover:bg-gray-700" href="#home">Home</a></li>
+                    <li><a class="block p-4 hover:bg-gray-700" href="#experience">Experience</a></li>
+                    <li><a class="block p-4 hover:bg-gray-700" href="#education">Education</a></li>
+                    <li><a class="block p-4 hover:bg-gray-700" href="#skills">Toolbox</a></li>
+                    <li><a class="block p-4 hover:bg-gray-700" href="#projects">Projects</a></li>
+                    <li><a class="block p-4 hover:bg-gray-700" href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <script>
+        document.getElementById('hamburger').addEventListener('click', function() {
+            var mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Close the menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Firebase SDK Initialization Complete Message
+        document.addEventListener('DOMContentLoaded', function() {
+            const loadEl = document.querySelector('#load');
+            try {
+                let app = firebase.app();
+                let features = [
+                    'auth', 
+                    'database', 
+                    'firestore',
+                    'functions',
+                    'messaging', 
+                    'storage', 
+                    'analytics', 
+                    'remoteConfig',
+                    'performance',
+                ].filter(feature => typeof app[feature] === 'function');
+                loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+            } catch (e) {
+                console.error(e);
+                loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+            }
+        });
+    </script>
+
+    <!-- Experience Section -->
+    <section class="py-16 bg-gray-100" id="experience">
+        <div class="container mx-auto px-6 md:px-12 lg:px-48">
+            <h2 class="text-3xl font-bold mb-8">Professional Experience</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-2">Software Engineer</h3>
+                    <p class="text-gray-600"><a href="https://www2.esaote.com/en-US/">Esaote</a>, Genova, Italy</p>
+                    <p>Started: April 3, 2024</p>
+                    <p>Currently working as a Software Engineer at <a href="https://www2.esaote.com/en-US/">Esaote</a> contributing to the development and
+                        maintenance of advanced medical imaging software.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-2">Stage - Software Engineering</h3>
+                    <p class="text-gray-600"><a href="https://www.ericsson.com/en">Ericsson</a> Genova, GE, Italia, Italia</p>
+                    <p>Two-week immersion in the dynamic realm of software engineering, gaining valuable insights into
+                        professional workflows and practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Education Section -->
+    <section class="py-16 bg-white" id="education">
+        <div class="container mx-auto px-6 md:px-12 lg:px-48">
+            <h2 class="text-3xl font-bold mb-8">Education</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-2">Master Degree in Software Engineering</h3>
+                    <p class="text-gray-600"><a href="https://unige.it/">Università degli Studi di Genova</a> Sep 2022 – present Genova, Italy</p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-2">Bachelor Degree in Computer Science</h3>
+                    <p class="text-gray-600"><a href="https://unige.it/">Università degli Studi di Genova</a> Sep 2019 – Sep 2022 Genova, Italy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Skills Section -->
+    <section class="py-16 bg-gray-100" id="skills">
+        <div class="container mx-auto px-6 md:px-12 lg:px-48">
+            <h2 class="text-3xl font-bold mb-8">My Toolbox</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Programming Languages -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">Programming Languages</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center">
+                            <img alt="PHP" class="w-8 h-8 mr-2"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" />
+                            <span>PHP</span>
+                        </div>
+                        <div class="flex items-center">
+                            <img alt="TypeScript" class="w-8 h-8 mr-2"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" />
+                            <span>TypeScript</span>
+                        </div>
+                        <div class="flex items-center">
+                            <img alt="SQL" class="w-8 h-8 mr-2"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg" />
+                            <span>SQL</span>
+                        </div>
+                        <div class="flex items-center">
+                            <img alt="Python" class="w-8 h-8 mr-2"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" />
+                            <span>Python</span>
+                        </div>
+                        <div class="flex items-center">
+                            <img alt="Java" class="w-8 h-8 mr-2"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
+                            <span>Java</span>
+                        </div>
+                        <div class="flex items-center">
+                            <img alt="JavaScript" class="w-8 h-8 mr-2"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Markup and Style Languages -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">Markup and Style Languages</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center">
+                            <img alt="HTML" class="w-8 h-8 mr-2"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" />
+                            <span>HTML</span>
+                        </div>
+                        <div class="flex items-center">
+                            <img alt="CSS" class="w-8 h-8 mr-2"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" />
+                            <span>CSS</span>
+                        </div>
+                        <div class="flex items-center">
+                            <img alt="XML" class="w-8 h-8 mr-2"
+                                src="https://www.vectorlogo.zone/logos/w3c_xml/w3c_xml-icon.svg" />
+                            <span>XML</span>
+                        </div>
+                        <div class="flex items-center">
+                            <img alt="Markdown" class="w-8 h-8 mr-2"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg" />
+                            <span>Markdown</span>
+                        </div>
+                        <div class="flex items-center">
+                            <img alt="JSON" class="w-8 h-8 mr-2"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/json/json-original.svg" />
+                            <span>JSON</span>
+                        </div>
+                        <div class="flex items-center">
+                            <img alt="Sass" class="w-8 h-8 mr-2"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" />
+                            <span>Sass</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Frameworks -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">Frameworks</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center">
+                            <img alt=".NET" class="w-8 h-8 mr-2"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" />
+                            <span>.NET</span>
+                        </div>
+                        <div class="flex items-center">
+                            <img alt="React" class="w-8 h-8 mr-2"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
+                            <span>React</span>
+                        </div>
+                        <div class="flex items-center">
+                            <img alt="Angular" class="w-8 h-8 mr-2"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" />
+                            <span>Angular</span>
+                        </div>
+                        <div class="flex items-center">
+                            <img alt="Vue" class="w-8 h-8 mr-2"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" />
+                            <span>Vue.js</span>
+                        </div>
+                        <div class="flex items-center">
+                            <img alt="Django" class="w-8 h-8 mr-2"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" />
+                            <span>Django</span>
+                        </div>
+                        <div class="flex items-center">
+                            <img alt="Spring" class="w-8 h-8 mr-2"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" />
+                            <span>Spring</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="py-16 bg-white" id="projects">
+        <div class="container mx-auto px-6 md:px-12 lg:px-48">
+            <h2 class="text-3xl font-bold mb-8">Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                    <img alt="Distributed Computing Project" class="mb-4 rounded-lg" src="images/DC.jpeg" />
+                    <h3 class="text-xl font-semibold mb-2">Distributed Computing on Distributed System</h3>
+                    <p>Developed a high-impact distributed system targeting queuing and scheduling challenges.</p>
+                    <a href="https://github.com/PedemonteGiacomo/DistributedComputingProject"
+                        class="text-blue-500 hover:underline">View on GitHub</a>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                    <img alt="CPU and GPU Performance Analyst" class="mb-4 rounded-lg" src="images/HPC.jpeg" />
+                    <h3 class="text-xl font-semibold mb-2">Optimized CPU and GPU Performance Analysis</h3>
+                    <p>Expert in analyzing CPU and GPU characteristics across diverse problem sets.</p>
+                    <a href="https://adjoining-snowstorm-a80.notion.site/HPC-Final-Assignment-1-665b8576ecda443489e2f2ee781c1f1e?pvs=74"
+                        class="text-blue-500 hover:underline">Part 1</a>
+                    <a href="https://adjoining-snowstorm-a80.notion.site/HPC-Final-Assignment-2-01fa9dda09884b4aa9036ca236abbddd?pvs=74"
+                        class="text-blue-500 hover:underline">Part 2</a><br />
+                    <a href="https://adjoining-snowstorm-a80.notion.site/HPC-Final-Project-35b78bbe8e5d4b92b169e8175e6c22c8?pvs=74"
+                        class="text-blue-500 hover:underline">Part 3 - Final</a>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                    <img alt="Innovative Parking Simulation System" class="mb-4 rounded-lg" src="images/IOT.jpeg" />
+                    <h3 class="text-xl font-semibold mb-2">Parking Simulation System - IoT</h3>
+                    <p>Designed a cutting-edge parking simulation system integrating AI technology for license plate
+                        recognition.</p>
+                    <a href="https://github.com/PedemonteGiacomo/SmartParking"
+                        class="text-blue-500 hover:underline">View on GitHub</a>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                    <img alt="Cloud Infrastructure Project" class="mb-4 rounded-lg" src="images/Cloud.jpeg" />
+                    <h3 class="text-xl font-semibold mb-2">DevOps Project: Multi-Node
+                        Deployment & Automation</h3>
+                    <p>Led team in fully automating multi-node infrastructure setup for cloud computing using Ansible.
+                    </p>
+                    <a href="https://github.com/PedemonteGiacomo/VirtualizationAndCloudComputing"
+                        class="text-blue-500 hover:underline">View on GitHub</a>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                    <img alt="Machine Learning Project" class="mb-4 rounded-lg" src="images/MLDA.jpeg" />
+                    <h3 class="text-xl font-semibold mb-2">Book Recommendation System
+                    </h3>
+                    <p>Leveraged the top 50 of books for 10 years to develop efficient models predicting book genres.
+                    </p>
+                    <a href="https://github.com/PedemonteGiacomo/BookRecommendationSystem"
+                        class="text-blue-500 hover:underline">View on GitHub</a>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                    <img alt="AccessAI Chrome Extension" class="mb-4 rounded-lg" src="images/AccessAI.jpeg" />
+                    <h3 class="text-xl font-semibold mb-2">AccessAI Chrome Extension</h3>
+                    <p>An extension that uses AI to automatically produce more descriptive alternative text to help
+                        blind users with the accessibility of web applications.</p>
+                    <a href="https://chromewebstore.google.com/detail/accessai/ichlflnjccjdghdlhgpdgeneikcbciac"
+                        class="text-blue-500 hover:underline">View on Chrome Web Store</a><br />
+                    <a href="https://github.com/PedemonteGiacomo/AccessAI/tree/master"
+                        class="text-blue-500 hover:underline">View on GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+<section class="py-16 bg-gray-100" id="about">
+    <div class="container mx-auto px-6 md:px-12 lg:px-48">
+        <h2 class="text-3xl font-bold mb-8 text-center">My storyline</h2>
+        <div class="flex flex-col items-center">
+            <div class="bg-white p-6 md:p-12 rounded-lg shadow-md w-full md:w-7/8">
+                <div class="flex flex-col md:flex-row items-center justify-around mt-8 space-y-4 md:space-y-0">
+                    <div class="flex flex-col items-center">
+                        <img src="images/University of Genoa UniGe.png" alt="Bachelor Degree" class="w-32 h-32 md:w-48 md:h-48 rounded-full shadow-md mb-4 bg-gray-100">
+                        <span class="text-lg font-semibold">Bachelor's Degree</span>
+                    </div>
+                    <div class="flex items-center text-3xl text-blue-500 transform rotate-90 md:rotate-0">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="images/University of Genoa UniGe.png" alt="Master Degree" class="w-32 h-32 md:w-48 md:h-48 rounded-full shadow-md mb-4 bg-gray-100">
+                        <span class="text-lg font-semibold">Master's Degree</span>
+                    </div>
+                    <div class="flex items-center text-3xl text-blue-500 transform rotate-90 md:rotate-0">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="images/esaote-modified.png" alt="Esaote" class="w-32 h-32 md:w-48 md:h-48 rounded-full shadow-md mb-4 bg-gray-100">
+                        <span class="text-lg font-semibold">Esaote</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Connect with Me Section -->
+    <section class="py-16 bg-white" id="contact">
+        <div class="container mx-auto px-6 md:px-12 lg:px-48">
+            <h2 class="text-3xl font-bold mb-8 text-center">Connect with Me</h2>
+            <div class="flex flex-col items-center">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md w-full md:w-7/8">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
+                        <a class="text-blue-500 block" href="https://www.linkedin.com/in/giacomo-pedemonte-3983a6236" target="_blank">
+                            <div class="flex flex-col items-center">
+                                <i class="fab fa-linkedin fa-3x mb-2"></i>
+                                <span>LinkedIn</span>
+                            </div>
+                        </a>
+                        <a class="block" href="https://github.com/PedemonteGiacomo" target="_blank">
+                            <div class="flex flex-col items-center">
+                                <i class="fab fa-github fa-3x mb-2"></i>
+                                <span>GitHub</span>
+                            </div>
+                        </a>
+                        <a class="block" href="tel:+393467939050">
+                            <div class="flex flex-col items-center">
+                                <i class="fas fa-phone fa-3x mb-2"></i>
+                                <span>+39 3467939050</span>
+                            </div>
+                        </a>
+                        <a class="block" href="mailto:giacomopedemonte@libero.it">
+                            <div class="flex flex-col items-center">
+                                <i class="fas fa-envelope fa-3x mb-2"></i>
+                                <span>giacomopedemonte@libero.it</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="py-6 bg-gray-800 text-white">
+        <div class="container mx-auto px-6 md:px-12 lg:px-48 text-center">
+            <p>© 2024 Giacomo Pedemonte. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/firebase.js"></script>
+</body>
+
+</html>
