@@ -1,12 +1,14 @@
 import React from 'react';
-import Intro from './components/Intro';
+import Starfield from './components/Starfield';
 
 const App: React.FC = () => {
   return (
-    <div className="app">
-      <Intro />
-      {/* Other components can be added here */}
-    </div>
+    <>
+      <Starfield />
+      <div id="content">
+        {/* Add your site content here */}
+      </div>
+    </>
   );
 };
 

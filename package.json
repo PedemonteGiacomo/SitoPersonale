@@ -1,0 +1,19 @@
+{
+  "name": "sitopersonale",
+  "version": "1.0.0",
+  "description": "1. Clone the repository or download the project files. 2. Ensure you have a local web server installed (e.g., [http-server](https://www.npmjs.com/package/http-server) for Node.js).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@react-three/fiber": "^9.2.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "three": "^0.178.0"
+  }
+}
