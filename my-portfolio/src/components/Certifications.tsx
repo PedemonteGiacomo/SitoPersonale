@@ -1,5 +1,5 @@
 import { Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot } from '@mui/lab';
-import { Typography, Paper } from '@mui/material';
+import { Typography, Paper, Box } from '@mui/material';
 import { motion } from 'framer-motion';
 
 interface CertificationEvent {
@@ -47,12 +47,16 @@ const itemVariants = {
 
 export default function Certifications() {
   return (
-    <Timeline position="alternate">
-      {events.map((event, i) => (
-        <motion.div
-          key={i}
-          custom={i}
-          initial="hidden"
+    <Box id="certifications">
+      <Typography variant="h5" gutterBottom>
+        Certifications & Studies
+      </Typography>
+      <Timeline position="alternate">
+        {events.map((event, i) => (
+          <motion.div
+            key={i}
+            custom={i}
+            initial="hidden"
           whileInView="visible"
           variants={itemVariants}
         >
@@ -75,6 +79,7 @@ export default function Certifications() {
           </TimelineItem>
         </motion.div>
       ))}
-    </Timeline>
+      </Timeline>
+    </Box>
   );
 }

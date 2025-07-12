@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
 interface Skill {
   name: string;
@@ -29,24 +31,22 @@ const skills: Skill[] = [
   },
 ];
 
-const Skills: React.FC = () => {
-  return (
-    <div className="grid grid-cols-2 gap-4">
+const Skills: React.FC = () => (
+  <Box id="skills">
+    <Typography variant="h5" gutterBottom>
+      Skills & Stack
+    </Typography>
+    <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 2 }}>
       {skills.map((skill) => (
-        <motion.div
-          key={skill.name}
-          whileHover={{ scale: 1.1 }}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="flex items-center space-x-2"
-        >
-          <img src={skill.icon} alt={skill.name} className="w-8 h-8" />
-          <span>{skill.name}</span>
+        <motion.div key={skill.name} whileHover={{ scale: 1.1 }}>
+          <Box textAlign="center">
+            <img src={skill.icon} alt={skill.name} style={{ width: 40, height: 40 }} />
+            <Typography variant="body2">{skill.name}</Typography>
+          </Box>
         </motion.div>
       ))}
-    </div>
-  );
-};
+    </Box>
+  </Box>
+);
 
 export default Skills;

@@ -1,30 +1,38 @@
 import React from 'react';
 import { useGlitch } from 'react-powerglitch';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import Button from '@mui/material/Button';
 
 const Contact: React.FC = () => {
   const glitch = useGlitch({ playMode: 'hover' });
   return (
-    <section className="contact-section">
-      <h2 ref={glitch.ref}>Connect with Me</h2>
-      <ul>
+    <Box id="contact" textAlign="center">
+      <Typography variant="h5" gutterBottom ref={glitch.ref as any}>
+        Connect with Me
+      </Typography>
+      <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
         <li>
-          <a href="mailto:giacomopedemonte@libero.it" target="_blank" rel="noopener noreferrer">
+          <Link href="mailto:giacomopedemonte@libero.it" target="_blank" rel="noopener noreferrer">
             Email
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://www.linkedin.com/in/giacomo-pedemonte-3983a6236" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.linkedin.com/in/giacomo-pedemonte-3983a6236" target="_blank" rel="noopener noreferrer">
             LinkedIn
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="https://github.com/PedemonteGiacomo" target="_blank" rel="noopener noreferrer">
+          <Link href="https://github.com/PedemonteGiacomo" target="_blank" rel="noopener noreferrer">
             GitHub
-          </a>
+          </Link>
         </li>
-      </ul>
-      <a ref={glitch.ref} href="/cv.pdf" download className="cv-button">Download CV</a>
-    </section>
+      </Box>
+      <Button ref={glitch.ref} href="/cv.pdf" download variant="outlined" sx={{ mt: 2 }}>
+        Download CV
+      </Button>
+    </Box>
   );
 };
 

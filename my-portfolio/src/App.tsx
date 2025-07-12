@@ -1,7 +1,10 @@
-import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
+import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
 import Starfield from './components/Starfield';
+import Navbar from './components/Navbar';
 import Intro from './components/Intro';
 import AboutMe from './components/AboutMe';
 import Skills from './components/Skills';
@@ -14,17 +17,21 @@ import Contact from './components/Contact';
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Starfield />
-      <Box sx={{ p: 2 }}>
-        <Intro />
-        <AboutMe />
-        <Skills />
-        <Projects />
-        <Certifications />
-        <NerdSection />
-        <InteractiveCV />
-        <Contact />
-      </Box>
+      <Navbar />
+      <Container maxWidth="md" sx={{ pt: 12 }}>
+        <Stack spacing={8}>
+          <Intro />
+          <AboutMe />
+          <Skills />
+          <Projects />
+          <Certifications />
+          <NerdSection />
+          <InteractiveCV />
+          <Contact />
+        </Stack>
+      </Container>
     </ThemeProvider>
   );
 }

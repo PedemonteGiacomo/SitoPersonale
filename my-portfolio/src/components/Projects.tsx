@@ -1,5 +1,5 @@
-import React from "react";
-import { Card, CardContent, CardActions, Button, Typography, Box } from "@mui/material";
+import React from 'react';
+import { Card, CardContent, CardActions, Button, Typography, Box } from '@mui/material';
 import { motion } from "framer-motion";
 
 interface Project {
@@ -22,21 +22,26 @@ const cardStyle = {
   width: 300,
   height: 200,
   perspective: 1000,
-  margin: "1rem"
+  margin: '1rem',
 };
 
 export default function Projects() {
   return (
-    <Box display="flex" flexWrap="wrap" justifyContent="center">
-      {projects.map(project => (
-        <motion.div
-          key={project.title}
-          style={cardStyle as React.CSSProperties}
-          whileHover={{ rotateY: 15, rotateX: 10 }}
-        >
-          <HoverCard project={project} />
-        </motion.div>
-      ))}
+    <Box id="projects">
+      <Typography variant="h5" gutterBottom>
+        Projects
+      </Typography>
+      <Box display="flex" flexWrap="wrap" justifyContent="center">
+        {projects.map((project) => (
+          <motion.div
+            key={project.title}
+            style={cardStyle as React.CSSProperties}
+            whileHover={{ rotateY: 15, rotateX: 10 }}
+          >
+            <HoverCard project={project} />
+          </motion.div>
+        ))}
+      </Box>
     </Box>
   );
 }

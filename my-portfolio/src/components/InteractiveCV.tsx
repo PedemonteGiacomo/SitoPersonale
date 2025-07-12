@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Box from '@mui/material/Box';
 
 const resumeYaml = `
 name: Giacomo Pedemonte
@@ -49,7 +50,10 @@ export default function InteractiveCV() {
   };
 
   return (
-    <div className="interactive-cv" style={{ fontFamily: 'monospace', background: '#000', color: '#0f0', padding: '1rem' }}>
+    <Box
+      id="interactive-cv"
+      sx={{ fontFamily: 'monospace', background: '#000', color: '#0f0', p: 2 }}
+    >
       {history.map((line, idx) => (
         <div key={idx}>{line}</div>
       ))}
@@ -63,6 +67,6 @@ export default function InteractiveCV() {
           autoFocus
         />
       </form>
-    </div>
+    </Box>
   );
 }
