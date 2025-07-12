@@ -1,12 +1,11 @@
 import React from 'react';
-import GlitchClip from 'react-glitch-effect/core/GlitchClip';
+import { useGlitch } from 'react-powerglitch';
 
 const Contact: React.FC = () => {
+  const glitch = useGlitch({ playMode: 'hover' });
   return (
     <section className="contact-section">
-      <GlitchClip>
-        <h2>Connect with Me</h2>
-      </GlitchClip>
+      <h2 ref={glitch.ref}>Connect with Me</h2>
       <ul>
         <li>
           <a href="mailto:giacomopedemonte@libero.it" target="_blank" rel="noopener noreferrer">
@@ -24,9 +23,7 @@ const Contact: React.FC = () => {
           </a>
         </li>
       </ul>
-      <GlitchClip>
-        <a href="/cv.pdf" download className="cv-button">Download CV</a>
-      </GlitchClip>
+      <a ref={glitch.ref} href="/cv.pdf" download className="cv-button">Download CV</a>
     </section>
   );
 };

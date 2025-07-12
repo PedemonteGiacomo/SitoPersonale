@@ -49,30 +49,31 @@ export default function Certifications() {
   return (
     <Timeline position="alternate">
       {events.map((event, i) => (
-        <TimelineItem
+        <motion.div
           key={i}
-          component={motion.div}
           custom={i}
           initial="hidden"
           whileInView="visible"
           variants={itemVariants}
         >
-          <TimelineSeparator>
-            <TimelineDot color="primary" />
-            {i < events.length - 1 && <TimelineConnector />}
-          </TimelineSeparator>
-          <TimelineContent>
-            <Paper elevation={3} style={{ padding: '6px 16px' }}>
-              <Typography variant="h6" component="h1">
-                {event.title}
-              </Typography>
-              <Typography variant="subtitle2">{event.subtitle}</Typography>
-              <Typography variant="body2" color="textSecondary">
-                {event.date}
-              </Typography>
-            </Paper>
-          </TimelineContent>
-        </TimelineItem>
+          <TimelineItem>
+            <TimelineSeparator>
+              <TimelineDot color="primary" />
+              {i < events.length - 1 && <TimelineConnector />}
+            </TimelineSeparator>
+            <TimelineContent>
+              <Paper elevation={3} style={{ padding: '6px 16px' }}>
+                <Typography variant="h6" component="h1">
+                  {event.title}
+                </Typography>
+                <Typography variant="subtitle2">{event.subtitle}</Typography>
+                <Typography variant="body2" color="textSecondary">
+                  {event.date}
+                </Typography>
+              </Paper>
+            </TimelineContent>
+          </TimelineItem>
+        </motion.div>
       ))}
     </Timeline>
   );
