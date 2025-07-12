@@ -15,6 +15,8 @@ experience:
   - company: Ericsson
     position: Software Engineering Internship
     years: 2024
+certifications:
+  - AWS Certified Developer – Associate (2024)
 skills:
   - React
   - TypeScript
