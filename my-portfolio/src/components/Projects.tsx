@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Card, CardContent, CardActions, Button, Typography, Box, Collapse, IconButton } from '@mui/material';
 import { motion } from 'framer-motion';
-import CodeIcon from '@mui/icons-material/Code';
+import CodeIcon from '@mui/icons-material/CodeOutlined';
 
 interface Project {
   title: string;
