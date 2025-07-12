@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Box from '@mui/material/Box';
 
 const KONAMI_SEQUENCE = [
   'ArrowUp',
@@ -48,9 +49,10 @@ const NerdSection: React.FC = () => {
   }, []);
 
   return (
-    <div
-      style={{
-        padding: '1rem',
+    <Box
+      id="nerd"
+      sx={{
+        p: 2,
         textAlign: 'center',
         background: active ? '#222' : 'inherit',
         color: active ? '#0f0' : 'inherit',
@@ -62,7 +64,7 @@ const NerdSection: React.FC = () => {
           {asciiArt}
         </pre>
       )}
-    </div>
+    </Box>
   );
 };
 
