@@ -4,28 +4,35 @@ import Box from '@mui/material/Box';
 const resumeYaml = `
 name: Giacomo Pedemonte
 role: Software Engineer
+location: Genoa, Italy
+education:
+  - Master's in Software Engineering (ongoing), University of Genoa
+  - Bachelor's in Computer Science, University of Genoa (2019-2022)
 experience:
-  - company: Example Corp
-    position: Developer
-    years: 2020-2022
-  - company: Another Inc
-    position: Researcher
-    years: 2018-2020
+  - company: Esaote
+    position: Software Engineer
+    years: 2024-present
+  - company: Ericsson
+    position: Software Engineering Internship
+    years: 2024
 skills:
-  - JavaScript
-  - TypeScript
   - React
+  - TypeScript
+  - Python
+  - Docker
+  - Azure
 `;
 
 const helpText = `Available commands:
   help              Show this message
   cat resume.yaml   Display resume information
+  links             Show contact links
   clear             Clear the terminal\n`;
 
 const prompt = '$ ';
 
 export default function InteractiveCV() {
-  const [history, setHistory] = useState<string[]>(['Type \"help\" to get started.']);
+  const [history, setHistory] = useState<string[]>(['Type "help" to see available commands.']);
   const [input, setInput] = useState('');
 
   const runCommand = (command: string) => {
@@ -34,6 +41,8 @@ export default function InteractiveCV() {
         return helpText.trim();
       case 'cat resume.yaml':
         return resumeYaml.trim();
+      case 'links':
+        return 'GitHub: https://github.com/PedemonteGiacomo\nLinkedIn: https://www.linkedin.com/in/giacomo-pedemonte-3983a6236/';
       case 'clear':
         setHistory([]);
         return '';

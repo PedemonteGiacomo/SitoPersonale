@@ -7,8 +7,11 @@ const AboutMe: React.FC = () => (
     <Typography variant="h5" gutterBottom>
       About Me
     </Typography>
-    <Typography>
-      Software engineer by profession, systems tinkerer by obsession.
+    <Typography paragraph>
+      Software engineer by profession, systems tinkerer by obsession. I am currently pursuing a Master&#39;s degree in Software Engineering at the University of Genoa while working at Esaote on medical imaging software.
+    </Typography>
+    <Typography paragraph>
+      My interests span distributed systems, cloud native technologies and high performance computing. I love experimenting with new tech and sharing open source projects on GitHub.
     </Typography>
   </Box>
 );

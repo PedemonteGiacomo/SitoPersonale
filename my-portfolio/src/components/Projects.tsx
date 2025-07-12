@@ -11,11 +11,41 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "Example Project",
-    description: "Short project description.",
-    repo: "https://github.com/user/example",
-    snippet: "$ git clone https://github.com/user/example\n$ cd example\n$ npm install\n$ npm start"
-  }
+    title: 'AccessAI Chrome Extension',
+    description: 'Automatically generates descriptive alt text for better web accessibility.',
+    repo: 'https://github.com/PedemonteGiacomo/AccessAI',
+    snippet: '$ git clone https://github.com/PedemonteGiacomo/AccessAI\n$ cd AccessAI\n$ npm install\n$ npm run build',
+  },
+  {
+    title: 'Distributed Computing Project',
+    description: 'High-impact distributed system tackling queuing and scheduling challenges.',
+    repo: 'https://github.com/PedemonteGiacomo/DistributedComputingProject',
+    snippet: '$ git clone https://github.com/PedemonteGiacomo/DistributedComputingProject',
+  },
+  {
+    title: 'Parking Simulation System',
+    description: 'IoT project using AI for license plate recognition.',
+    repo: 'https://github.com/PedemonteGiacomo/SmartParking',
+    snippet: '$ git clone https://github.com/PedemonteGiacomo/SmartParking',
+  },
+  {
+    title: 'Book Recommendation System',
+    description: 'Machine learning models predicting book genres from a decade of best sellers.',
+    repo: 'https://github.com/PedemonteGiacomo/BookRecommendationSystem',
+    snippet: '$ git clone https://github.com/PedemonteGiacomo/BookRecommendationSystem',
+  },
+  {
+    title: 'cv2kinesis',
+    description: 'Real-time object detection and streaming with YOLOv8 and AWS Kinesis.',
+    repo: 'https://github.com/PedemonteGiacomo/cv2kinesis',
+    snippet: '$ git clone https://github.com/PedemonteGiacomo/cv2kinesis\n$ cd cv2kinesis',
+  },
+  {
+    title: 'Virtualization and Cloud Computing',
+    description: 'Automated multi-node infrastructure setup using Ansible.',
+    repo: 'https://github.com/PedemonteGiacomo/VirtualizationAndCloudComputing',
+    snippet: '$ git clone https://github.com/PedemonteGiacomo/VirtualizationAndCloudComputing',
+  },
 ];
 
 const cardStyle = {
