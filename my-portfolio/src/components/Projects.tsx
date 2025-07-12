@@ -1,6 +1,8 @@
 import React from 'react';
-import { Card, CardContent, CardActions, Button, Typography, Box } from '@mui/material';
-import { motion } from "framer-motion";
+import { useState } from 'react';
+import { Card, CardContent, CardActions, Button, Typography, Box, Collapse, IconButton } from '@mui/material';
+import { motion } from 'framer-motion';
+import CodeIcon from '@mui/icons-material/Code';
 
 interface Project {
   title: string;
@@ -49,9 +51,7 @@ const projects: Project[] = [
 ];
 
 const cardStyle = {
-  width: 300,
-  height: 200,
-  perspective: 1000,
+  width: 320,
   margin: '1rem',
 };
 
@@ -66,7 +66,7 @@ export default function Projects() {
           <motion.div
             key={project.title}
             style={cardStyle as React.CSSProperties}
-            whileHover={{ rotateY: 15, rotateX: 10 }}
+            whileHover={{ scale: 1.05 }}
           >
             <HoverCard project={project} />
           </motion.div>
@@ -77,37 +77,34 @@ export default function Projects() {
 }
 
 function HoverCard({ project }: { project: Project }) {
-  const [hover, setHover] = React.useState(false);
+  const [showSnippet, setShowSnippet] = useState(false);
 
   return (
-    <Card
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      sx={{ height: "100%" }}
-    >
-      {hover ? (
-        <CardContent sx={{ backgroundColor: "#222", color: "#0f0", height: "100%" }}>
-          <Typography component="pre" sx={{ fontFamily: "monospace", whiteSpace: "pre" }}>
+    <Card sx={{ height: '100%' }}>
+      <CardContent>
+        <Typography variant="h5" component="div">
+          {project.title}
+        </Typography>
+        <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+          {project.description}
+        </Typography>
+        <Collapse in={showSnippet} timeout="auto" unmountOnExit>
+          <Typography
+            component="pre"
+            sx={{ fontFamily: 'monospace', whiteSpace: 'pre-wrap', backgroundColor: '#222', color: '#0f0', p: 1, borderRadius: 1 }}
+          >
             {project.snippet}
           </Typography>
-        </CardContent>
-      ) : (
-        <>
-          <CardContent>
-            <Typography variant="h5" component="div">
-              {project.title}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {project.description}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small" href={project.repo} target="_blank" rel="noopener noreferrer">
-              GitHub
-            </Button>
-          </CardActions>
-        </>
-      )}
+        </Collapse>
+      </CardContent>
+      <CardActions>
+        <Button size="small" href={project.repo} target="_blank" rel="noopener noreferrer">
+          GitHub
+        </Button>
+        <IconButton size="small" onClick={() => setShowSnippet(!showSnippet)} aria-label="commands">
+          <CodeIcon fontSize="small" />
+        </IconButton>
+      </CardActions>
     </Card>
   );
 }
