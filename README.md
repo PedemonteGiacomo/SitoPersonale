@@ -34,6 +34,14 @@ app in the repository.
     npm run dev
     ```
 4. Visit `http://localhost:5173` (or the port shown in the terminal) to view the React version.
+5. Build optimized assets:
+    ```bash
+    npm run build
+    ```
+6. (optional) Preview the production build:
+    ```bash
+    npm run preview
+    ```
 
 ## Customization
 
