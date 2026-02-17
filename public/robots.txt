@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://portfolio-d52a5.web.app/sitemap.xml
+
+# Block crawling of Firebase functions and admin paths
+Disallow: /__/*
