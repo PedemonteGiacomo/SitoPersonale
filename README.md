@@ -199,4 +199,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 🔗 **Live Demo**: https://portfolio-d52a5.web.app  
 🐙 **Source**: https://github.com/PedemonteGiacomo  
-📧 **Contact**: [Your Email Here]
+📧 **Contact**: giacomopedemonte@libero.it
